@@ -42,8 +42,8 @@ namespace WsCinemaOc.Controllers
         {
             try
             {
-                var gen = await _GenreRepository.GetByIdAsync(genre.Id);
-                if (gen.Nombre == genre.Nombre)
+                var gen = await _GenreRepository.GetAllAsync();
+                if (gen.Any(g => g.Nombre == genre.Nombre))
                 {
                     return BadRequest();
                 }
